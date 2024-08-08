@@ -1,4 +1,5 @@
-
+import { optional } from "zod"
+import { currencies } from "../data"
 
 export default function CriptoSearchForm() {
   return (
@@ -20,6 +21,14 @@ export default function CriptoSearchForm() {
                 id="criptoCurrency"
             >
                 <option value="">Seleccione</option>
+                {currencies.map(currency => (
+                    <option 
+                        key={currency.code} 
+                        value={currency.code}
+                    >   
+                        {currency.name}
+                    </option>
+                ))}
             </select>
         </div>
 
