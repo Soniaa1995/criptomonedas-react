@@ -1,4 +1,3 @@
-import { optional } from "zod"
 import { currencies } from "../data"
 
 export default function CriptoSearchForm() {
