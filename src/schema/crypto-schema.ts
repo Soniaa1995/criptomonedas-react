@@ -14,3 +14,8 @@ export const CryptoCurrencyResponseSchema = z.object({
 })
 
 export const CryptoCurrenciesResponseSchema = z.array(CryptoCurrencyResponseSchema)  //coge es eesquema y lo convierte ne un arreglo
+
+export const PairSchema = z.object({
+    currency: z.string(),
+    criptocurrency: z.string()
+})
