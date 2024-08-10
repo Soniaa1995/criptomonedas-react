@@ -7,6 +7,7 @@ import ErrorMessage from "./ErrorMessage"
 export default function CriptoSearchForm() {
 
     const cryptocurrencies = useCryptoStore((state) => state.cryptocurrencies) //extraer el state de nuestra store
+    const fetchData = useCryptoStore((state) => state.fetchData)
     const [pair, setPair] = useState<Pair>({
         currency: '',
         criptocurrency: ''
@@ -27,8 +28,8 @@ export default function CriptoSearchForm() {
             setError('Todos los campos son obligatorios')
             return
         }
-        setError('')
-        //si pasa estos campos vamos a consultar la api
+        setError('')   //si pasa estos campos vamos a consultar la api
+        fetchData(pair)
     }
 
   return (
@@ -58,10 +59,10 @@ export default function CriptoSearchForm() {
         </div>
 
         <div className="field">
-            <label htmlFor="criptoCurrency">Criptomoneda</label>
+            <label htmlFor="criptocurrency">Criptomoneda</label>
             <select 
-                name="criptoCurrency" 
-                id="criptoCurrency"
+                name="criptocurrency" 
+                id="criptocurrency"
                 onChange={handleChange}
                 value={pair.criptocurrency}
             >
@@ -69,11 +70,11 @@ export default function CriptoSearchForm() {
                 {cryptocurrencies.map(crypto => (
                     <option
                         key={crypto.CoinInfo.FullName}
-                        value={crypto.CoinInfo.Name}>
+                        value={crypto.CoinInfo.Name}
+                    >
                             {crypto.CoinInfo.FullName}
                     </option>
-                ))}
-                
+                ))} 
             </select>
         </div>
 
